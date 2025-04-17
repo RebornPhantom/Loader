@@ -1,3 +1,8 @@
-local module = Instance.new("ModuleScript")
-module.Name = "TestLoadModule"
-module.Parent = game.ReplicatedStorage
+function A()
+	print("A called")
+end
+
+function B()
+	print("Calling A from B")
+	A()
+end
