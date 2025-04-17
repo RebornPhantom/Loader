@@ -1,4 +1,3 @@
-print("Remote code is running")
-local scriptInstance = Instance.new("Script")
-scriptInstance.Name = "TestLoad"
-scriptInstance.Parent = ReplicatedStorage
+local module = Instance.new("ModuleScript")
+module.Name = "TestLoadModule"
+module.Parent = game.ReplicatedStorage
