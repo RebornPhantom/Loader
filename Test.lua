@@ -1,34 +1,35 @@
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
+local PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
 
-local function createNameTag(character)
-	local head = character:WaitForChild("Head", 5)
-	if not head then return end
+local function createSimpleGui()
+	if PlayerGui:FindFirstChild("SimpleGui") then return end
 
-	if head:FindFirstChild("NameTag") then return end
+	local gui = Instance.new("ScreenGui")
+	gui.Name = "SimpleGui"
+	gui.ResetOnSpawn = false
+	gui.Parent = PlayerGui
 
-	local billboard = Instance.new("BillboardGui")
-	billboard.Name = "NameTag"
-	billboard.Size = UDim2.new(0, 200, 0, 50)
-	billboard.StudsOffset = Vector3.new(0, 2.5, 0)
-	billboard.Adornee = head
-	billboard.AlwaysOnTop = true
-	billboard.Parent = head
+	local frame = Instance.new("Frame")
+	frame.Size = UDim2.new(0, 200, 0, 100)
+	frame.Position = UDim2.new(0.5, -100, 0.5, -50)
+	frame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+	frame.BorderSizePixel = 0
+	frame.Parent = gui
 
-	local label = Instance.new("TextLabel")
-	label.Size = UDim2.new(1, 0, 1, 0)
-	label.BackgroundTransparency = 1
-	label.TextScaled = true
-	label.Text = "👑 " .. LocalPlayer.DisplayName
-	label.Font = Enum.Font.GothamBold
-	label.TextColor3 = Color3.fromRGB(255, 215, 0)
-	label.TextStrokeTransparency = 0.6
-	label.TextStrokeColor3 = Color3.new(0, 0, 0)
-	label.Parent = billboard
+	local button = Instance.new("TextButton")
+	button.Size = UDim2.new(1, 0, 1, 0)
+	button.Position = UDim2.new(0, 0, 0, 0)
+	button.BackgroundColor3 = Color3.fromRGB(50, 100, 200)
+	button.Text = "Click Me"
+	button.TextColor3 = Color3.fromRGB(255, 255, 255)
+	button.Font = Enum.Font.GothamBold
+	button.TextScaled = true
+	button.Parent = frame
+
+	button.MouseButton1Click:Connect(function()
+		print("Simple GUI button clicked")
+	end)
 end
 
-LocalPlayer.CharacterAdded:Connect(createNameTag)
-
-if LocalPlayer.Character then
-	createNameTag(LocalPlayer.Character)
-end
+createSimpleGui()
