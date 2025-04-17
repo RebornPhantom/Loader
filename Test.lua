@@ -1,11 +1,11 @@
 local Players = game:GetService("Players")
-local RunService = game:GetService("RunService")
-
 local LocalPlayer = Players.LocalPlayer
 
 local function createNameTag(character)
 	local head = character:WaitForChild("Head", 5)
 	if not head then return end
+
+	if head:FindFirstChild("NameTag") then return end
 
 	local billboard = Instance.new("BillboardGui")
 	billboard.Name = "NameTag"
@@ -21,11 +21,14 @@ local function createNameTag(character)
 	label.TextScaled = true
 	label.Text = "👑 " .. LocalPlayer.DisplayName
 	label.Font = Enum.Font.GothamBold
-	label.TextColor3 = Color3.fromRGB(0, 255, 255)
+	label.TextColor3 = Color3.fromRGB(255, 215, 0)
+	label.TextStrokeTransparency = 0.6
+	label.TextStrokeColor3 = Color3.new(0, 0, 0)
 	label.Parent = billboard
 end
 
 LocalPlayer.CharacterAdded:Connect(createNameTag)
+
 if LocalPlayer.Character then
 	createNameTag(LocalPlayer.Character)
 end
