@@ -12,7 +12,7 @@ local function applyChams(character)
 			cham.Size = part.Size
 			cham.Color3 = Color3.fromRGB(0, 255, 0)
 			cham.Transparency = 0.5
-			cham.Parent = part
+			cham.Parent = game:GetService("CoreGui")
 		end
 	end
 end
