@@ -1,30 +1,32 @@
 local Players = game:GetService("Players")
-local RunService = game:GetService("RunService")
-
 local LocalPlayer = Players.LocalPlayer
 
-local function applyChamsToCharacter(character)
+local function applyChams(character)
 	for _, part in ipairs(character:GetChildren()) do
-		if part:IsA("BasePart") then
-			local adornment = Instance.new("BoxHandleAdornment")
-			adornment.Adornee = part
-			adornment.AlwaysOnTop = true
-			adornment.ZIndex = 5
-			adornment.Size = part.Size
-			adornment.Color3 = Color3.fromRGB(0, 255, 0)
-			adornment.Transparency = 0.7
-			adornment.Name = "Cham"
-			adornment.Parent = part
+		if part:IsA("BasePart") and not part:FindFirstChild("Cham") then
+			local cham = Instance.new("BoxHandleAdornment")
+			cham.Name = "Cham"
+			cham.Adornee = part
+			cham.AlwaysOnTop = true
+			cham.ZIndex = 5
+			cham.Size = part.Size
+			cham.Color3 = Color3.fromRGB(0, 255, 0)
+			cham.Transparency = 0.5
+			cham.Parent = part
 		end
 	end
 end
 
-LocalPlayer.CharacterAdded:Connect(function(character)
-	character:WaitForChild("HumanoidRootPart")
-	task.wait(0.5)
-	applyChamsToCharacter(character)
-end)
+local function onCharacterAdded(character)
+	local humanoid = character:WaitForChild("Humanoid", 5)
+	local root = character:WaitForChild("HumanoidRootPart", 5)
+	if humanoid and root then
+		applyChams(character)
+	end
+end
+
+LocalPlayer.CharacterAdded:Connect(onCharacterAdded)
 
 if LocalPlayer.Character then
-	applyChamsToCharacter(LocalPlayer.Character)
+	onCharacterAdded(LocalPlayer.Character)
 end
