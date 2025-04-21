@@ -8,6 +8,7 @@ function Main()
 	part.BrickColor = BrickColor.new("Bright red")
 	part.Name = "TestBlock"
 
+	print("Character value:", player.Character)
 	if player.Character then
 		part.Position = player.Character:GetPivot().Position
 		part.Parent = player.Character
