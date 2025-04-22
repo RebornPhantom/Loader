@@ -25,5 +25,5 @@ function Main()
 		end
 	end
 
-	print("Glow applied to:", char.Name)
+	print("Glow applied to", char.Name)
 end
