@@ -16,4 +16,5 @@ function Main()
 
 	print("PartPosition:", part.Position)
 	print("Partplacedinworkspacet:", part.Position)
+	print("Character is in:", char.Parent)
 end
