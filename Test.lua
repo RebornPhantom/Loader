@@ -1,5 +1,5 @@
 function Main()
-	print("LocalPlayer:", game.Players.LocalPlayer)
+	print("LocalPlayer:", game.Players.LocalPlayer.Name)
 
 	local part = Instance.new("Part")
 	part.Size = Vector3.new(2, 1, 2)
