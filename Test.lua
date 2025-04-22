@@ -7,24 +7,25 @@ function Main()
 	part.BrickColor = BrickColor.new("Bright blue")
 	part.Parent = workspace
 
-	task.wait(0.5)
-
-	local found = workspace:FindFirstChild("TestBlock")
-	if found then
-		print("✅ Part successfully created:", found:GetFullName())
+	local exists = workspace:FindFirstChild("TestBlock")
+	if exists then
+		print("✅ Part successfully created:", exists.Parent.Name)
 	else
 		print("❌ Part creation failed.")
 	end
 
-	print("🔎 Workspace children:")
-	for _, child in ipairs(workspace:GetChildren()) do
-		print("-", child.Name, "(", child.ClassName, ")")
+	print("📂 Workspace children:")
+	for _, obj in ipairs(workspace:GetChildren()) do
+		print("  -", obj.Name)
 	end
 
-	local folder = workspace:FindFirstChild("Barriers")
-	if folder then
-		print("📁 Found workspace.Barriers:", folder:GetFullName())
+	local barriers = workspace:FindFirstChild("Barriers")
+	if barriers then
+		print("📘 Found workspace.Barriers:", tostring(barriers))
+		for _, child in ipairs(barriers:GetChildren()) do
+			print("  🔹", child.Name)
+		end
 	else
-		print("📁 Folder 'Barriers' not found in workspace.")
+		print("📘 Folder 'Barriers' not found in workspace.")
 	end
 end
