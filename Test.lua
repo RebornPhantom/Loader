@@ -7,9 +7,11 @@ function Main()
 	part.BrickColor = BrickColor.new("Bright blue")
 	part.Parent = workspace
 
-	local exists = workspace:FindFirstChild("TestBlock")
+	task.wait()
+
+	local exists = workspace:FindFirstChild("TestBlock", true)
 	if exists then
-		print("✅ Part successfully created", exists.Name)
+		print("✅ Part successfully created:", exists:GetFullName())
 	else
 		print("❌ Part creation failed.")
 	end
