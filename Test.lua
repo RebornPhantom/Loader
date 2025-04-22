@@ -9,7 +9,7 @@ function Main()
 
 	local exists = workspace:FindFirstChild("TestBlock")
 	if exists then
-		print("✅ Part successfully created:", exists.Name)
+		print("✅ Part successfully created", exists.Name)
 	else
 		print("❌ Part creation failed.")
 	end
