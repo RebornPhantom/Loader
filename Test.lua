@@ -15,4 +15,16 @@ function Main()
 	else
 		print("❌ Part creation failed.")
 	end
+
+	print("🔎 Workspace Children:")
+	for _, child in ipairs(workspace:GetChildren()) do
+		print("-", child.Name, "(", child.ClassName, ")")
+	end
+
+	local folder = workspace:FindFirstChild("Barriers")
+	if folder then
+		print("📁 Found folder: workspace.Barriers =", folder:GetFullName())
+	else
+		print("📁 Folder 'Barriers' not found in workspace.")
+	end
 end
