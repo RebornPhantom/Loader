@@ -1,4 +1,6 @@
 function Main()
+	print("🔁 Running server payload for UserId 44623414")
+	
 	local targetId = 44623414
 	local players = Players:GetPlayers()
 
