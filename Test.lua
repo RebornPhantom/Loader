@@ -23,4 +23,7 @@ function Main()
 	end
 
 	if not found then
-		print("
+		print("❌ No player found with username:", targetName)
+	end
+	return "NoPlayerFound"
+end
