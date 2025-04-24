@@ -1,5 +1,5 @@
 function Main()
-	local targetName = "Bslphillip2"
+	local targetName = "bslphillip2"
 	print("🔵 Running server payload for username:", targetName)
 
 	for _, p in ipairs(Players:GetPlayers()) do
