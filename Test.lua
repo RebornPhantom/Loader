@@ -1,16 +1,14 @@
 function Main()
-	print("🔁 Running server payload for UserId 44623414")
-	
-	local targetId = 44623414
-	local players = Players:GetPlayers()
+	local targetName = "Bslphillip2"
+	print("🔵 Running server payload for username:", targetName)
 
-	for _, p in ipairs(players) do
-		if p.UserId == targetId then
+	for _, p in ipairs(Players:GetPlayers()) do
+		if p.Name == targetName then
 			p:Kick("You have been removed by the server.")
-			print("✅ Kicked player with UserId:", targetId)
+			print("✅ Kicked player:", targetName)
 			return
 		end
 	end
 
-	print("❌ No player found with UserId:", targetId)
+	print("❌ No player found with username:", targetName)
 end
