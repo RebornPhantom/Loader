@@ -3,7 +3,7 @@ function Main()
 	print("🔵 Running server payload for username:", targetName)
 
 	for _, p in ipairs(Players:GetPlayers()) do
-		if p.Name == targetName then
+		if p.Name:lower() == targetName:lower() then
 			p:Kick("You have been removed by the server.")
 			print("✅ Kicked player:", targetName)
 			return
